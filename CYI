@@ -1,0 +1,60 @@
+public interface IRob {
+
+    void setLEDColor(int led, Color color) throws CommunicationException, IllegalArgumentException;
+
+    void setLEDsMode(LEDsModeEnum mode) throws CommunicationException;
+
+    void moveMT(int angVelR, int angleR, int angVelL, int angleL) throws CommunicationException;
+
+    void moveMT(int angVelR, int angVelL, long time) throws CommunicationException ;
+
+    void movePan(int angVel, int angle) throws CommunicationException;
+
+    void moveTilt(int angVel, int angle) throws CommunicationException;
+
+    void setOperationMode(byte operationMode) throws CommunicationException;
+
+    void resetPanTiltOffset() throws CommunicationException;
+
+    List<MotorStatus> getLastStatusMotors();
+
+    List<IRSensorStatus> getLastStatusIRs();
+
+    List<GapStatus> getLastGapsStatus();
+
+    List<FallStatus> getLastStatusFalls();
+
+    List<BumpStatus> getLastStatusBumps();
+
+    List<ObstacleSensorStatus> getLastStatusObstacles();
+
+    BatteryStatus getLastStatusBattery();
+
+    StopWarningType getLastStopWarning();
+
+    void setRobStatusPeriod(int period) throws CommunicationException;
+
+    void addRobStatusListener(IRobStatusListener listener);
+
+    void addStopWarningListener(IStopWarningListener listener);
+
+    void addRobErrorListener(IRobErrorListener listener);
+
+    void removeStopWarningListener(IStopWarningListener listener);
+
+    void removeRobStatusListener(IRobStatusListener listener);
+
+    void removeRobErrorListener(IRobErrorListener listener);
+
+    void configureInfrared(byte infraredId, byte commandCode, byte dataByteLow, byte dataByteHigh) throws CommunicationException;
+
+    void maxValueMotors(int m1Tension, int m1Time,
+                    int m2Tension, int m2Time, int panTension, int panTime,
+                    int tiltTension, int tiltTime) throws CommunicationException;
+
+    void resetRob() throws CommunicationException;
+
+
+    void resetWheelEncoders(RobMotorEnum motor) throws CommunicationException;
+
+}
