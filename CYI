@@ -58,3 +58,52 @@ public interface IRob {
     void resetWheelEncoders(RobMotorEnum motor) throws CommunicationException;
 
 }
+public interface IRobMovementModule extends IModule {
+
+
+    public void moveForwardsTime(int velocity, long time) throws InternalErrorException;
+
+    public void moveForwardsAngle(int velocity, int angle) throws InternalErrorException;
+
+    public void moveBackwardsTime(int velocity, long time) throws InternalErrorException;
+
+    public void moveBackwardsAngle(int velocity, int angle) throws InternalErrorException;
+
+    public void stop() throws InternalErrorException;
+
+    public void turnLeftTime(int velocity, long time) throws InternalErrorException;
+
+    public void turnLeftAngle(int velocity, int angle) throws InternalErrorException;
+
+    public void turnRightTime(int velocity, long time) throws InternalErrorException;
+
+    public void turnRightAngle(int velocity, int angle) throws InternalErrorException;
+
+    public void turnLeftBackwardsTime(int velocity, long time) throws InternalErrorException;
+
+    public void turnRightBackwardsTime(int velocity, long time) throws InternalErrorException;
+
+    public void movePan(int velocity, int angle) throws InternalErrorException;
+
+    public void moveTilt(int velocity, int angle) throws InternalErrorException;
+
+    public void movePanTilt(int velocitypan, int anglepan ,int velocitytilt, int angletilt) throws InternalErrorException;
+
+}
+public interface ICameraModule extends IModule {
+
+    public void suscribe(ICameraListener listener);
+
+    public void unsuscribe(ICameraListener listener);
+
+    public void signalInit();
+
+    public void passOCVthings(CameraBridgeViewBase bridgebase);
+
+    public void changeCamera();
+}
+
+    public void addProcessor(AudioProcessor processor);
+
+
+
